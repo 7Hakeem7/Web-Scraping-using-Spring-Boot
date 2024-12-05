@@ -2,44 +2,67 @@ package com.example.web_scraping_with_trie.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ScrapingService {
+    private final Trie trie = new Trie();
+    private final List<Map<String, String>> scrapedData = new ArrayList<>();
 
-    // A list to store scraped data (to simulate a database for now)
-    private final List<String> scrapedData = new ArrayList<>();
+    // Scrape a single URL and check for keywords
+    public void scrape(String url, List<String> keywords) throws IOException {
+        try {
+            Document document = Jsoup.connect(url).get();
+            String content = document.text();
+            LocalDateTime timestamp = LocalDateTime.now(); // Record timestamp
 
-    // On-demand scraping method
-    public String scrape(String url, List<String> keywords) throws IOException {
-        Document document = Jsoup.connect(url).get();
-        String bodyText = document.body().text();
-
-        // Filter content based on keywords
-        for (String keyword : keywords) {
-            if (bodyText.contains(keyword)) {
-                scrapedData.add("Found keyword: " + keyword + " at URL: " + url);
+            // Check for each keyword in the content
+            for (String keyword : keywords) {
+                if (content.contains(keyword)) {
+                    String matchedContent = extractMatchedContent(content, keyword); // Extract content
+                    trie.insert(keyword); // Insert keyword into Trie
+                    
+                    // Store metadata for the scraped data
+                    scrapedData.add(Map.of(
+                        "keyword", keyword,
+                        "url", url,
+                        "matchedContent", matchedContent,
+                        "timestamp", timestamp.toString()
+                    ));
+                }
             }
+        } catch (IOException e) {
+            throw new IOException("Failed to scrape URL: " + url, e);
         }
-        return "Scraping completed for: " + url;
     }
 
-    // Scheduled scraping task
-    @Scheduled(fixedRate = 60000) // Every 1 minute
-    public void scheduledScraping() throws IOException {
-        System.out.println("Scheduled scraping triggered...");
-        // Sample URL and keywords for demo purposes
-        scrape("https://example.com", List.of("technology", "innovation"));
+    // Helper method to extract matched content (customize as per requirements)
+    private String extractMatchedContent(String content, String keyword) {
+        int startIndex = content.indexOf(keyword);
+        int endIndex = Math.min(startIndex + 100, content.length()); // Get first 100 chars after keyword
+        return content.substring(startIndex, endIndex) + "..."; // Add "..." at the end
     }
 
-    // Retrieve scraped data (for testing purposes)
-    public List<String> getScrapedData() {
-        return scrapedData;
+    // Retrieve all scraped data with metadata (url, matchedContent, timestamp)
+    public List<Map<String, String>> getScrapedData() {
+        return new ArrayList<>(scrapedData);
+    }
+
+    // Search for results by prefix in scraped data using Trie
+    public List<Map<String, String>> searchByPrefix(String prefix, int limit) {
+        // Find all matching keywords in the trie
+        List<String> keywords = trie.getWordsWithPrefix(prefix);
+
+        // Filter scraped data by matched keywords
+        return scrapedData.stream()
+            .filter(data -> keywords.contains(data.get("keyword")))
+            .limit(limit) // Limit the number of results
+            .toList();
     }
 }
-
