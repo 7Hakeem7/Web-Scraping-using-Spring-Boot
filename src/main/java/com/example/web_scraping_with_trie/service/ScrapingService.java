@@ -2,6 +2,7 @@ package com.example.web_scraping_with_trie.service;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -14,6 +15,14 @@ import java.util.Map;
 public class ScrapingService {
     private final Trie trie = new Trie();
     private final List<Map<String, String>> scrapedData = new ArrayList<>();
+    private final List<String> scheduledUrls = new ArrayList<>();
+    private final List<String> scheduledKeywords = new ArrayList<>();
+
+    // Add URLs and keywords for scheduled scraping
+    public void addScheduledTask(String url, List<String> keywords) {
+        scheduledUrls.add(url);
+        scheduledKeywords.addAll(keywords);
+    }
 
     // Scrape a single URL and check for keywords
     public void scrape(String url, List<String> keywords) throws IOException {
@@ -39,6 +48,17 @@ public class ScrapingService {
             }
         } catch (IOException e) {
             throw new IOException("Failed to scrape URL: " + url, e);
+        }
+    }
+
+    @Scheduled(fixedRate = 3600000) // 1 hour in milliseconds
+    public void performScheduledScraping() {
+        for (String url : scheduledUrls) {
+            try {
+                scrape(url, scheduledKeywords);
+            } catch (IOException e) {
+                System.err.println("Error during scheduled scraping for URL: " + url + " - " + e.getMessage());
+            }
         }
     }
 

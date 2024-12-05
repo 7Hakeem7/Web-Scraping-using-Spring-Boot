@@ -51,6 +51,30 @@ public class ScrapingController {
         return ResponseEntity.ok(scrapedData);
     }
 
+    // Add URLs and keywords for scheduled scraping
+    @PostMapping("/schedule-scraping")
+    public ResponseEntity<String> addScheduledTask(@RequestBody Map<String, Object> request) {
+        try {
+            List<?> rawUrls = (List<?>) request.get("urls");
+            List<?> rawKeywords = (List<?>) request.get("keywords");
+
+            if (rawUrls == null || rawKeywords == null) {
+                return ResponseEntity.badRequest().body("Invalid input: 'urls' and 'keywords' are required.");
+            }
+
+            List<String> urls = rawUrls.stream().map(Object::toString).toList();
+            List<String> keywords = rawKeywords.stream().map(Object::toString).toList();
+
+            for (String url : urls) {
+                scrapingService.addScheduledTask(url, keywords);
+            }
+
+            return ResponseEntity.ok("Scheduled scraping task added successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("An error occurred: " + e.getMessage());
+        }
+    }
+
     // Endpoint to search for content based on a prefix
     @PostMapping("/search")
     public ResponseEntity<Map<String, Object>> search(@RequestBody Map<String, Object> request) {
