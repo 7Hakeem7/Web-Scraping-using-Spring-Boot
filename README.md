@@ -37,7 +37,7 @@ mvn spring-boot:run
 Access the application at: http://localhost:8081
 
 # **Endpoints**
-### 1️⃣ **Scrape URL for Keywords**
+### 1️⃣ **/api/v1/scrape for Keywords**
 URL: /scrape
 Method: POST
 Description: Scrapes the provided URL for specified keywords and stores metadata.
@@ -52,7 +52,7 @@ json
 {
   "message": "Scraping completed successfully."
 }
-### 2️⃣ **Get All Scraped Data**
+### 2️⃣ **/api/v1/scraped-data for all present data**
 URL: /scraped-data
 Method: GET
 Description: Retrieves all data scraped so far, including URLs, matched content, and timestamps.
@@ -66,7 +66,7 @@ json
     "timestamp": "2024-12-05T10:15:30"
   }
 ]
-### 3️⃣ **Search by Prefix**
+### 3️⃣ **/api/v1/search for content with keyword**
 URL: /search
 Method: GET
 Description: Searches for keywords starting with the specified prefix and returns the matching data.
@@ -86,7 +86,7 @@ json
     "timestamp": "2024-12-05T10:15:30"
   }
 ]
-### 4️⃣ **Scheduled Scraping**
+### 4️⃣ **/api/v1/scheduled-scraping for automated scraping**
 Description: Automatically scrapes predefined URLs at regular intervals (1 hour by default).
 Setup: Add URLs and keywords to the scheduledUrls and scheduledKeywords lists in the code.
 Logs: Scheduled scraping logs are available in the application console.
@@ -104,17 +104,28 @@ Validating scraped data retrieval.
 Ensuring prefix-based search functionality.
 
 Directory Structure
+
 web-scraping-with-trie
-├── src/main/java/com/example/web_scraping_with_trie
-│   ├── controller        # REST API controllers
-│   ├── service           # Business logic
-│   ├── model             # Data models
-│   └── repository        # Persistence layer
-├── src/test/java/com/example/web_scraping_with_trie
-├── resources
-│   └── application.properties
-├── pom.xml
-└── README.md
+
+**├── src/main/java/com/example/web_scraping_with_trie**
+
+**│   ├── controller        # REST API controllers**
+
+**│   ├── service           # Business logic**
+
+**│   ├── model             # Data models**
+
+**│   └── repository        # Persistence layer**
+
+**├── src/test/java/com/example/web_scraping_with_trie**
+
+**├── resources**
+
+**│   └── application.properties**
+
+**├── pom.xml**
+
+**└── README.md**
 
 # **Future Enhancements**
 🔒 Add authentication for endpoints.
