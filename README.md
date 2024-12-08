@@ -22,7 +22,7 @@ Clone the repository
 bash
 Copy code
 
-git clone https://github.com/Hakeem7/web-scraping-with-trie.git
+git clone [https://github.com/Hakeem7/web-scraping-with-trie.git](https://github.com/7Hakeem7/Web-Scraping-using-Spring-Boot.git)
 
 Navigate to the project directory
 bash
