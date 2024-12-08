@@ -8,10 +8,10 @@ A Spring Boot-based application for web scraping and keyword management using a 
 📅 Scheduled scraping: Automates scraping tasks at regular intervals.
 🛠️ REST APIs: Four endpoints for managing scraping tasks and results.
 # **Technologies Used**
--Java 17
-+Spring Boot 3.1.0
-*JSoup (for HTML parsing)
--Mockito and JUnit 5 (for testing)
+- Java 17
++ Spring Boot 3.1.0
+* JSoup (for HTML parsing)
+- Mockito and JUnit 5 (for testing)
 
 # **Setup Instructions**
 Clone the repository
