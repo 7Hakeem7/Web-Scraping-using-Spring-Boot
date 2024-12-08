@@ -12,8 +12,8 @@ A Spring Boot-based application for web scraping and keyword management using a 
 
 🛠️ REST APIs: Four endpoints for managing scraping tasks and results.
 # **Technologies Used**
-- Java 17
-+ Spring Boot 3.1.0
+- Java 21
++ Spring Boot 3.4.1
 * JSoup (for HTML parsing)
 - Mockito and JUnit 5 (for testing)
 
