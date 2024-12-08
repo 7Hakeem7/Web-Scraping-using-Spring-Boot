@@ -103,9 +103,7 @@ Mocking the Trie behavior.
 Validating scraped data retrieval.
 Ensuring prefix-based search functionality.
 
-Directory Structure
-
-web-scraping-with-trie
+# **Directory Structure**
 
 **├── src/main/java/com/example/web_scraping_with_trie**
 
