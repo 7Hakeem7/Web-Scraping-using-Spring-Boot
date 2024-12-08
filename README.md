@@ -106,16 +106,19 @@ web-scraping-with-trie
 │   └── application.properties
 ├── pom.xml
 └── README.md
-Future Enhancements
+
+# **Future Enhancements**
 🔒 Add authentication for endpoints.
+
 🗄️ Integrate a persistent database for better scalability.
+
 🌐 Create a front-end interface for improved usability.
 
 License
 This project is licensed under the MIT License.
 See the LICENSE file for details.
 
-Contact
+# **Contact**
 📧 Hakeem Syed
 ✉️ Email: 7hakeemsyed7@gmail.com
 🌐 LinkedIn: https://www.linkedin.com/in/syed-hakeem7
