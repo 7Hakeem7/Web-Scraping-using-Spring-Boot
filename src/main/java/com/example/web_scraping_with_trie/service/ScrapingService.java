@@ -13,10 +13,15 @@ import java.util.Map;
 
 @Service
 public class ScrapingService {
-    private final Trie trie = new Trie();
+    private Trie trie = new Trie();
     private final List<Map<String, String>> scrapedData = new ArrayList<>();
     private final List<String> scheduledUrls = new ArrayList<>();
     private final List<String> scheduledKeywords = new ArrayList<>();
+
+    // Constructor injection for dependency
+    public ScrapingService(Trie trie) {
+        this.trie = trie;
+    }
 
     // Add URLs and keywords for scheduled scraping
     public void addScheduledTask(String url, List<String> keywords) {

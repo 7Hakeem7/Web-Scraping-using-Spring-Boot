@@ -1,6 +1,6 @@
 
 
-package com.example.web_scraping_with_trie.contoller;
+package com.example.web_scraping_with_trie.controller;
 
 import com.example.web_scraping_with_trie.service.ScrapingService;
 import org.springframework.http.ResponseEntity;

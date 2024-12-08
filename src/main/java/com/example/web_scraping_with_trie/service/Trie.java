@@ -60,6 +60,12 @@ public class Trie {
         return words;
     }
 
+    public List<String> searchByPrefix(String prefix, int limit) {
+        List<String> words = getWordsWithPrefix(prefix);
+        return words.subList(0, Math.min(words.size(), limit)); // Limit the results
+    }
+    
+
     private void collectWords(Node node, StringBuilder prefix, List<String> words) {
         if (node.isEnd()) {
             words.add(prefix.toString());
