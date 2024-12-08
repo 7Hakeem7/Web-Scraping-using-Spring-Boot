@@ -1,10 +1,15 @@
+## Please access the application on port: 8081 if port: 8080 is busy!
+
 # **Web Scraping with Trie**
 A Spring Boot-based application for web scraping and keyword management using a Trie data structure, with support for prefix-based searching and scheduled tasks.
 
 # **Features**
 🕷️ Web scraping: Scrapes web pages for specified keywords.
+
 📂 Trie-based search: Efficient prefix-based keyword search.
+
 📅 Scheduled scraping: Automates scraping tasks at regular intervals.
+
 🛠️ REST APIs: Four endpoints for managing scraping tasks and results.
 # **Technologies Used**
 - Java 17
@@ -16,7 +21,9 @@ A Spring Boot-based application for web scraping and keyword management using a 
 Clone the repository
 bash
 Copy code
-git clone https://github.com/<your-username>/web-scraping-with-trie.git
+
+git clone https://github.com/Hakeem7/web-scraping-with-trie.git
+
 Navigate to the project directory
 bash
 cd web-scraping-with-trie
@@ -26,7 +33,9 @@ mvn clean install
 Run the application
 bash
 mvn spring-boot:run
+
 Access the application at: http://localhost:8081
+
 # **Endpoints**
 ### 1️⃣ **Scrape URL for Keywords**
 URL: /scrape
