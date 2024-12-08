@@ -1,13 +1,13 @@
 
-Web Scraping with Trie
+# ** Web Scraping with Trie **
 A Spring Boot-based application for web scraping and keyword management using a Trie data structure, with support for prefix-based searching and scheduled tasks.
 
-Features
+# ** Features **
 🕷️ Web scraping: Scrapes web pages for specified keywords.
 📂 Trie-based search: Efficient prefix-based keyword search.
 📅 Scheduled scraping: Automates scraping tasks at regular intervals.
 🛠️ REST APIs: Four endpoints for managing scraping tasks and results.
-Technologies Used
+# **Technologies Used**
 Java 17
 Spring Boot 3.1.0
 JSoup (for HTML parsing)
