@@ -1,4 +1,3 @@
-
 # **Web Scraping with Trie**
 A Spring Boot-based application for web scraping and keyword management using a Trie data structure, with support for prefix-based searching and scheduled tasks.
 
@@ -29,7 +28,7 @@ bash
 mvn spring-boot:run
 Access the application at: http://localhost:8081
 # **Endpoints**
-1️⃣ **Scrape URL for Keywords**
+### 1️⃣ **Scrape URL for Keywords**
 URL: /scrape
 Method: POST
 Description: Scrapes the provided URL for specified keywords and stores metadata.
@@ -44,7 +43,7 @@ json
 {
   "message": "Scraping completed successfully."
 }
-2️⃣ **Get All Scraped Data**
+### 2️⃣ **Get All Scraped Data**
 URL: /scraped-data
 Method: GET
 Description: Retrieves all data scraped so far, including URLs, matched content, and timestamps.
@@ -58,7 +57,7 @@ json
     "timestamp": "2024-12-05T10:15:30"
   }
 ]
-3️⃣ **Search by Prefix**
+### 3️⃣ **Search by Prefix**
 URL: /search
 Method: GET
 Description: Searches for keywords starting with the specified prefix and returns the matching data.
@@ -78,7 +77,7 @@ json
     "timestamp": "2024-12-05T10:15:30"
   }
 ]
-4️⃣ **Scheduled Scraping**
+### 4️⃣ **Scheduled Scraping**
 Description: Automatically scrapes predefined URLs at regular intervals (1 hour by default).
 Setup: Add URLs and keywords to the scheduledUrls and scheduledKeywords lists in the code.
 Logs: Scheduled scraping logs are available in the application console.
