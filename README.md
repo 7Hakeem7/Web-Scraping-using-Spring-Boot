@@ -1,7 +1,21 @@
 ## Please access the application on port: 8081 if port: 8080 is busy!
+## Postman API Documentation : [https://documenter.getpostman.com/view/32468893/2sAYHwH4ao](https://documenter.getpostman.com/view/32468893/2sAYHwH4ao)
 
 # **Web Scraping with Trie**
 A Spring Boot-based application for web scraping and keyword management using a Trie data structure, with support for prefix-based searching and scheduled tasks.
+
+# **HOW TO RUN**
+**git clone [https://github.com/Hakeem7/web-scraping-with-trie.git](https://github.com/7Hakeem7/Web-Scraping-using-Spring-Boot.git)**
+
+**cd web-scraping-with-trie**
+
+**mvn clean install**
+
+**mvn spring-boot:run**
+
+**http://localhost:8081**
+
+**mvn test**
 
 # **Features**
 🕷️ Web scraping: Scrapes web pages for specified keywords.
